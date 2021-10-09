@@ -1,0 +1,40 @@
+2021-09-08 21:26:14,705 - DEBUG - Start of program
+2021-09-08 21:26:14,708 - DEBUG - Start of factorial(5%)
+2021-09-08 21:26:14,708 - DEBUG - i is 0, total is 0
+2021-09-08 21:26:14,709 - DEBUG - i is 1, total is 0
+2021-09-08 21:26:14,709 - DEBUG - i is 2, total is 0
+2021-09-08 21:26:14,710 - DEBUG - i is 3, total is 0
+2021-09-08 21:26:14,710 - DEBUG - i is 4, total is 0
+2021-09-08 21:26:14,711 - DEBUG - i is 5, total is 0
+2021-09-08 21:26:14,711 - DEBUG - End of factorial(5%)
+2021-09-08 21:26:14,712 - DEBUG - End of program
+2021-09-08 21:26:25,097 - DEBUG - Start of program
+2021-09-08 21:26:25,098 - DEBUG - Start of factorial(5%)
+2021-09-08 21:26:25,099 - DEBUG - i is 0, total is 0
+2021-09-08 21:26:25,101 - DEBUG - i is 1, total is 0
+2021-09-08 21:26:25,102 - DEBUG - i is 2, total is 0
+2021-09-08 21:26:25,103 - DEBUG - i is 3, total is 0
+2021-09-08 21:26:25,103 - DEBUG - i is 4, total is 0
+2021-09-08 21:26:25,104 - DEBUG - i is 5, total is 0
+2021-09-08 21:26:25,104 - DEBUG - End of factorial(5%)
+2021-09-08 21:26:25,106 - DEBUG - End of program
+2021-09-15 00:00:29,235 - DEBUG - Start of program
+2021-09-15 00:00:29,238 - DEBUG - Start of factorial(5%)
+2021-09-15 00:00:29,240 - DEBUG - i is 0, total is 0
+2021-09-15 00:00:29,242 - DEBUG - i is 1, total is 0
+2021-09-15 00:00:29,243 - DEBUG - i is 2, total is 0
+2021-09-15 00:00:29,245 - DEBUG - i is 3, total is 0
+2021-09-15 00:00:29,246 - DEBUG - i is 4, total is 0
+2021-09-15 00:00:29,247 - DEBUG - i is 5, total is 0
+2021-09-15 00:00:29,249 - DEBUG - End of factorial(5%)
+2021-09-15 00:00:29,251 - DEBUG - End of program
+2021-09-15 00:00:34,729 - DEBUG - Start of program
+2021-09-15 00:00:34,731 - DEBUG - Start of factorial(5%)
+2021-09-15 00:00:34,731 - DEBUG - i is 0, total is 0
+2021-09-15 00:00:34,732 - DEBUG - i is 1, total is 0
+2021-09-15 00:00:34,732 - DEBUG - i is 2, total is 0
+2021-09-15 00:00:34,733 - DEBUG - i is 3, total is 0
+2021-09-15 00:00:34,733 - DEBUG - i is 4, total is 0
+2021-09-15 00:00:34,734 - DEBUG - i is 5, total is 0
+2021-09-15 00:00:34,734 - DEBUG - End of factorial(5%)
+2021-09-15 00:00:34,735 - DEBUG - End of program
