@@ -4,7 +4,7 @@ from pathlib import Path
 
 print("Excel - propiedades utiles y datos de un rango")
 path = Path(
-    r"C:\Users\jmallegue\Documents\GitHub\Python\Automate the Boring Stuff with Python\Archivos auxiliares\Chapter-13\example.xlsx")
+    r"D:\Documentos\GitHub\Python\Automate the Boring Stuff with Python\Archivos auxiliares\Chapter-13\example.xlsx")
 
 wbExample = openpyxl.load_workbook(path)
 wsSheet1 = wbExample["Sheet1"]
@@ -21,7 +21,8 @@ print(column_index_from_string("a"))
 for rowOfCellObjects in wsSheet1['A1':'C3']:
     for cellObj in rowOfCellObjects:
         print(cellObj.coordinate, cellObj.value)
-        print('--- END OF ROW ---')
+
+    print('--- END OF ROW ---')
 
 # para acceder a los datos de una fila o columna en particula
 for cellObj in list(wsSheet1.columns)[1]:
