@@ -8,17 +8,23 @@ pathResumenes = r"E:\Imagenes\Resumenes"
 pathPerfiles = r"E:\Imagenes\Conseguir"
 archivoPerfiles = "Instagram.txt"
 
-# usuarios
-# l.login("jasonspeed123", "henryford1992") a verificar
-#l.login("howyoudoing1098020", "henryford1992")
+try:
 
-os.chdir(r"E:\Imagenes\Instagram")
+    # usuarios
+    # l.login("jasonspeed123", "henryford1992") a verificar
+    #l.login("howyoudoing1098020", "henryford1992")
 
-ultimoUpdate = Modules.preparcionInicial(
-    pathResumenes, ["Resumen borrado.txt", "Resumen guardado.txt", "Ultimo update.txt"])
+    os.chdir(r"E:\Imagenes\Instagram")
 
-Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
-#Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
+    ultimoUpdate = Modules.preparcionInicial(
+        pathResumenes, ["Resumen borrado.txt", "Resumen guardado.txt", "Ultimo update.txt"])
+
+    #Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
+    Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
+
+except Exception as e:
+
+    print(f"Error: {str(e)}")
 
 
 print("Finish")
