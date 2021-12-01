@@ -12,15 +12,15 @@ try:
 
     # usuarios
     # l.login("jasonspeed123", "henryford1992") a verificar
-    #l.login("howyoudoing1098020", "henryford1992")
+    # l.login("howyoudoing0o9i8u7y6t5r", "qwerty123456")
 
     os.chdir(r"E:\Imagenes\Instagram")
 
     ultimoUpdate = Modules.preparcionInicial(
         pathResumenes, ["Resumen borrado.txt", "Resumen guardado.txt", "Ultimo update.txt"])
 
-    #Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
-    Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
+    Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
+    #Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
 
 except Exception as e:
 
