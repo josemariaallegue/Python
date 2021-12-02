@@ -19,8 +19,8 @@ try:
     ultimoUpdate = Modules.preparcionInicial(
         pathResumenes, ["Resumen borrado.txt", "Resumen guardado.txt", "Ultimo update.txt"])
 
-    Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
-    #Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
+    #Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
+    Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
 
 except Exception as e:
 
