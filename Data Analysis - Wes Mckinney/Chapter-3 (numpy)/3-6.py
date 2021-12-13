@@ -7,6 +7,8 @@ print("Boolean indexing\n")
 
 names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'])
 data = np.random.randn(7, 4,)
+print(data)
+print()
 
 # al hacer lo siguiente names == "Bob" creamos una lista/array de elementos bool
 # sera true si aparece Bob

@@ -12,7 +12,7 @@ try:
 
     # usuarios
     # l.login("jasonspeed123", "henryford1992") a verificar
-    # l.login("howyoudoing0o9i8u7y6t5r", "qwerty123456")
+    #l.login("howyoudoing0o9i8u7y6t5r", "qwerty123456")
 
     os.chdir(r"E:\Imagenes\Instagram")
 
