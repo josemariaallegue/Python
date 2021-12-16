@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from pandas.core import series
 
 print("Sorting and Ranking\n")
 
