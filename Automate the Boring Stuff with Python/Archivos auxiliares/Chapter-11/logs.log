@@ -38,3 +38,23 @@
 2021-09-15 00:00:34,734 - DEBUG - i is 5, total is 0
 2021-09-15 00:00:34,734 - DEBUG - End of factorial(5%)
 2021-09-15 00:00:34,735 - DEBUG - End of program
+2021-12-17 14:48:49,083 - DEBUG - Start of program
+2021-12-17 14:48:49,547 - DEBUG - Start of factorial(5%)
+2021-12-17 14:48:49,549 - DEBUG - i is 0, total is 0
+2021-12-17 14:48:49,550 - DEBUG - i is 1, total is 0
+2021-12-17 14:48:49,552 - DEBUG - i is 2, total is 0
+2021-12-17 14:48:49,557 - DEBUG - i is 3, total is 0
+2021-12-17 14:48:49,561 - DEBUG - i is 4, total is 0
+2021-12-17 14:48:49,564 - DEBUG - i is 5, total is 0
+2021-12-17 14:48:49,568 - DEBUG - End of factorial(5%)
+2021-12-17 14:48:49,573 - DEBUG - End of program
+2021-12-17 14:49:45,765 - DEBUG - Start of program
+2021-12-17 14:49:45,767 - CRITICAL - Start of factorial(5%)
+2021-12-17 14:49:45,767 - DEBUG - i is 0, total is 0
+2021-12-17 14:49:45,768 - DEBUG - i is 1, total is 0
+2021-12-17 14:49:45,768 - DEBUG - i is 2, total is 0
+2021-12-17 14:49:45,768 - DEBUG - i is 3, total is 0
+2021-12-17 14:49:45,769 - DEBUG - i is 4, total is 0
+2021-12-17 14:49:45,769 - DEBUG - i is 5, total is 0
+2021-12-17 14:49:45,769 - DEBUG - End of factorial(5%)
+2021-12-17 14:49:45,769 - DEBUG - End of program

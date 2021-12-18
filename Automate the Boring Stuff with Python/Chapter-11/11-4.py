@@ -23,7 +23,7 @@ logger.debug('Start of program')
 
 
 def factorial(n):
-    logger.debug('Start of factorial(%s%%)' % (n))
+    logger.critical('Start of factorial(%s%%)' % (n))
     total = 1
     for i in range(n + 1):
         total *= i

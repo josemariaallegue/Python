@@ -20,7 +20,7 @@ column or row. DataFrame’s apply method does exactly this."""
 def f(x): return x.max() - x.min()
 
 
-print(df.apply(f))
+print(df.apply(f, axis=0))
 print()
 
 """Element-wise Python functions can be used, too. Suppose you wanted to compute a
