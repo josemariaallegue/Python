@@ -102,7 +102,8 @@ def update(l: Instaloader, pathGeneral: str, ultimoUpdate: str, pathResumenes: s
         cleaning(str(Path(pathGeneral, folder)), ".xz")
         cleaning2(str(Path(pathGeneral, folder)))
         ordenamientoAño(str(Path(pathGeneral, folder)))
-        preparcionFinal(pathResumenes)
+
+    preparcionFinal(pathResumenes)
 
 
 def cleaning(path: str, format: str):
