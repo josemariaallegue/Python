@@ -1,8 +1,8 @@
 import os
-import datetime
 import re
-import send2trash
 import shutil
+import datetime
+import send2trash
 from glob import glob
 from pathlib import Path
 from instaloader.structures import Profile

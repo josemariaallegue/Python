@@ -2,34 +2,38 @@ import os
 import Modules
 from instaloader.instaloader import Instaloader
 
-l = Instaloader()
-pathGeneral = r"E:\Imagenes\Instagram"
-pathResumenes = r"E:\Imagenes\Resumenes"
-pathPerfiles = r"E:\Imagenes\Conseguir"
-archivoPerfiles = "Instagram.txt"
 
-try:
+def main():
 
-    # usuarios
-    # l.login("jasonspeed123", "henryford1992") a verificar
-    #l.login("howyoudoing0o9i8u7y6t5r", "qwerty123456")
+    l = Instaloader()
+    pathGeneral = r"E:\Imagenes\Instagram"
+    pathResumenes = r"E:\Imagenes\Resumenes"
+    pathPerfiles = r"E:\Imagenes\Conseguir"
+    archivoPerfiles = "Instagram.txt"
 
-    os.chdir(r"E:\Imagenes\Instagram")
+    try:
+        # usuarios
+        # l.login("jasonspeed123", "henryford1992") a verificar
+        #l.login("howyoudoing0o9i8u7y6t5r", "qwerty123456")
 
-    ultimoUpdate = Modules.preparcionInicial(
-        pathResumenes, ["Resumen borrado.txt", "Resumen guardado.txt", "Ultimo update.txt"])
+        os.chdir(r"E:\Imagenes\Instagram")
 
-    #Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
-    Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
+        ultimoUpdate = Modules.preparcionInicial(
+            pathResumenes, ["Resumen borrado.txt", "Resumen guardado.txt", "Ultimo update.txt"])
 
-except Exception as e:
+        #Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
+        Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
 
-    print(f"Error: {str(e)}")
+    except Exception as e:
+        print(f"Error: {str(e)}")
+
+    print("Finish")
 
 
-print("Finish")
+if __name__ == "__main__":
+    main()
 
-""" Incoporar: Agregar una comprobacion de que exista el usuario
+    """ Incoporar: Agregar una comprobacion de que exista el usuario
                Revisar si la carpeta esta creada pero vacia (genera error)
                Listado de usuarios y contraseñas desde archivo txt
                """
