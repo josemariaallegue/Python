@@ -1,28 +1,30 @@
 import os
 import Modules
+from pathlib import Path
+import pyinputplus as pyip
 from instaloader.instaloader import Instaloader
 
 
 def main():
 
     l = Instaloader()
-    pathGeneral = r"E:\Imagenes\Instagram"
-    pathResumenes = r"E:\Imagenes\Resumenes"
-    pathPerfiles = r"E:\Imagenes\Conseguir"
+    pathGeneral = Path(r"E:\Imagenes\Instagram")
+    pathResumenes = Path(r"E:\Imagenes\Resumenes")
+    pathPerfiles = Path(r"E:\Imagenes\Conseguir")
     archivoPerfiles = "Instagram.txt"
+    ultimoUpdate = Modules.preparcionInicial(
+        pathResumenes, ["Resumen borrado.txt", "Resumen guardado.txt", "Ultimo update.txt"])
+    os.chdir(r"E:\Imagenes\Instagram")
 
     try:
-        # usuarios
-        # l.login("jasonspeed123", "henryford1992") a verificar
-        #l.login("howyoudoing0o9i8u7y6t5r", "qwerty123456")
+        if(pyip.inputInt("Ingrese 1 para update o 2 para new: ", 1, min=1, max=2,) == 1):
+            Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
 
-        os.chdir(r"E:\Imagenes\Instagram")
-
-        ultimoUpdate = Modules.preparcionInicial(
-            pathResumenes, ["Resumen borrado.txt", "Resumen guardado.txt", "Ultimo update.txt"])
-
-        #Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
-        Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
+        else:
+            # usuarios
+            # l.login("jasonspeed123", "henryford1992") a verificar
+            l.login("howyoudoing0o9i8u7y6t5r", "qwerty123456")
+            Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
 
     except Exception as e:
         print(f"Error: {str(e)}")
