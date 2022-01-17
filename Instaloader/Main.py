@@ -18,12 +18,12 @@ def main():
 
     try:
         if(pyip.inputInt("Ingrese 1 para update o 2 para new: ", 1, min=1, max=2,) == 1):
+            # l.login(os.environ.get("INSTA_USER"), os.environ.get("INSTA_PASS"))
             Modules.update(l, pathGeneral, ultimoUpdate, pathResumenes)
 
         else:
             # usuarios
-            # l.login("jasonspeed123", "henryford1992") a verificar
-            l.login("howyoudoing0o9i8u7y6t5r", "qwerty123456")
+            # l.login(os.environ.get("INSTA_USER"), os.environ.get("INSTA_PASS"))
             Modules.new(l, pathGeneral, pathPerfiles, archivoPerfiles)
 
     except Exception as e:
