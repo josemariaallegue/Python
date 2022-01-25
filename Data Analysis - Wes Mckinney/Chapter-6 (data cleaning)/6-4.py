@@ -28,4 +28,3 @@ df["animal"] = df["food"].map(meat_to_animal)
 print(df)
 # equivalente al punto anterior
 df["animal"] = df["food"].map(lambda x: meat_to_animal[x.lower()])
-
