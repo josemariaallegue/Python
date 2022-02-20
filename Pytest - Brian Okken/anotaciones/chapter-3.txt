@@ -1,0 +1,25 @@
+# fixtures
+# son funciones que se ejecutan antes o despues de las pruebas para setear el ambiente
+# las que se quieren compartir con todos los tests se ponen en el archivo "conftest.py"
+# fuera de la carpeta de los tests
+# ejemplo donde se conecta a una db, se hacen los testeos y se cierra la coneccion
+
+@pytest.fixture()
+def tasks_db(tmpdir):
+    """Connect to db before tests, disconnect after."""
+    # Setup : start db
+    tasks.start_tasks_db(str(tmpdir), 'tiny')
+
+    yield  # this is where the testing happens
+
+    # Teardown : stop db
+    tasks.stop_tasks_db()
+
+# tmpdir es una carpeta temporal que crea pytest que se elimina automaticamente al finalizar
+# esta funciones se pasan como parametros en los tests
+
+def test_add_returns_valid_id(tasks_db):
+    pass
+
+# se puede hacer asserts dentro de fixtures
+# pero en vez de fallar el test, se detalla que hubo un error en el test

@@ -1,0 +1,82 @@
+# para probar exceptions es necesario utilizar "with". Por ejemplo;
+
+def text_exception_1():
+    with pytest.raises(ValueError) as excinfo:
+        modulo.funcion(parametro1)
+
+# si modulo.funcion(parametro1) genera la exception "ValueError" entonces se pasa el test
+# tambien se pueden testear los parametros de la exception con un assert
+
+def text_exception_1():
+    with pytest.raises(ValueError) as excinfo:
+        modulo.funcion(parametro1)
+        exception_msg = excinfo.value.args[0]
+        assert exception_msg == "db_type must be a 'tiny' or 'mongo'"
+
+
+# marcando funciones de prueba
+# permiten marcar funciones particular y correrlas con una coleeccion 
+
+@pytest.mark.mark1
+def test_marked():
+    pass
+
+@pytest.mark.mark2
+def test_marked():
+    pass
+
+# se corre de la siguiente forma
+
+pytest -m "mark1"
+pytest -m "mark1 and mark2"
+pytest -m "mark1 or mark2"
+
+# salteandose pruebas
+# para saltear una prueba por x razon se utilizar pytest.mark.skip(). Por ejemplo:
+
+@pytest.mark.skip(reason="razon zaraza")
+def test_skipped_function():
+    pass
+
+# se puede poner una razaon para que quede determinado el porque en la ejecucion
+# tambien se pueden saltear pruebas a partir de una condicion. Por ejemplo:
+
+@pytest.mark.skipif(tasks.__version__ < '0.2.0',
+                    reason='not supported until version 0.2.0')
+def test_skipped_function():
+    pass
+
+# aca se saltea esta prueba cuando la version de "tasks" es anterior a "0.2.0"
+
+# @pytest.mark.xfail() permite decirle a pytest que se espera que la funcion
+# falle. Se utiliza en metodos todavia no implementados o que tienen bugs no 
+# arreglados. Ejemplo:
+
+@pytest.mark.xfail(tasks.__version__ < '0.2.0',
+                   reason='not supported until version 0.2.0')
+def test_xfail():
+    pass
+
+# si el test no pasa dice XFAIL (resultado esperado) o XPASS si pasa (resultado no esperado)
+
+# se pueden agrupar tests en clases. Por ejemplo
+
+clas TestClass():
+
+    def test_1():
+        pass
+    
+    def test_2():
+        pass
+
+
+# se pueden correr una prueba contra un set de datos con @pytest.mark.parmetrize(). Por ejemplo:
+
+@pytest.mark.parametriza("elemento", 
+                        [elemento1(variable1,variable2),
+                        elemento2(varaible3,variable4)],
+                        elemento3(varaible5,variable6)])
+def test_parametrizado(elemento):
+    pass
+
+# los elementos pueden ser objetos (como en este caso) o variables sueltas
