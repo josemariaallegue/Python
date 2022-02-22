@@ -8,9 +8,9 @@ import time
 def footer_session_scope():
     """Report the time at the end of a session."""
     yield
-    now = time.time()
     print('--')
-    print('finished : {}'.format(time.strftime('%d %b %X', time.localtime(now))))
+    print('finished : {}'.format(time.strftime(
+        '%d %b %X', time.localtime(time.time()))))
     print('-----------------')
 
 

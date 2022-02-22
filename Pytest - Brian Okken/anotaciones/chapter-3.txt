@@ -1,5 +1,6 @@
 # fixtures
-# son funciones que se ejecutan antes o despues de las pruebas para setear el ambiente
+# son funciones que se ejecutan antes o despues de las pruebas para setear el ambiente o son funciones
+# normales que obtienen resultados
 # las que se quieren compartir con todos los tests se ponen en el archivo "conftest.py"
 # fuera de la carpeta de los tests
 # ejemplo donde se conecta a una db, se hacen los testeos y se cierra la coneccion
@@ -16,10 +17,61 @@ def tasks_db(tmpdir):
     tasks.stop_tasks_db()
 
 # tmpdir es una carpeta temporal que crea pytest que se elimina automaticamente al finalizar
-# esta funciones se pasan como parametros en los tests
+# estas funciones se pasan como parametros en los tests
 
 def test_add_returns_valid_id(tasks_db):
     pass
 
+# tambien se puede usar @pytest.mark.usefixtures() para pasar los fixtures a la funcion
+# esta ultima opcion se usa principalmente para las clases
+
 # se puede hacer asserts dentro de fixtures
 # pero en vez de fallar el test, se detalla que hubo un error en el test
+
+# se puede establecer el scope de los fixtures en la declaracion del mismo. Los tipos posibles son:
+
+scope=’function’
+Run once per test function. The setup portion is run before each test using the fixture. The
+teardown portion is run after each test using the fixture. This is the default scope used
+when no scope parameter is specified.
+
+scope=’class’
+Run once per test class, regardless of how many test methods are in the class.
+
+scope=’module’
+Run once per module, regardless of how many test functions or methods or other fixtures
+in the module use it.
+
+scope=’session’
+Run once per session. All test methods and functions using a fixture of session scope share
+one setup and teardown call.
+
+# autouse se pone para que los fixtures se agreguen automaticamente a todos los tests. Por ejemplo:
+
+@pytest.fixture(autouse=True, scope='session')
+def footer_session_scope():
+    """Report the time at the end of a session."""
+    yield
+    print('--')
+    print('finished : {}'.format(time.strftime(
+        '%d %b %X', time.localtime(time.time()))))
+    print('-----------------')
+
+# es preferible pasar los fixtures como parametros a usar el autouse
+
+# se puede renombrar los fixtures. Por ejemplo:
+
+@pytest.fixture(name='lue')
+
+# se pueden pasar parametros a los fixtures de forma similar que a los test
+# por ejemplo:
+
+ @pytest.fixture(params=tasks_to_try, ids=id_func)
+ def c_task(request):
+ """Using a function (id_func) to generate ids."""
+ return request.param
+
+# params=tasks_to_try son los elementos a pasar
+# ids=id_func son los id de los elemntos (a travez de una funcion). Es opcional
+# request es fixture interna que contiene a los parametros
+# request.param devuelv uno de los parametros

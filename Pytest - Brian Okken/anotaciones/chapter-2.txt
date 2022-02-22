@@ -72,10 +72,10 @@ clas TestClass():
 
 # se pueden correr una prueba contra un set de datos con @pytest.mark.parmetrize(). Por ejemplo:
 
-@pytest.mark.parametriza("elemento", 
+@pytest.mark.parametrize("elemento", 
                         [elemento1(variable1,variable2),
-                        elemento2(varaible3,variable4)],
-                        elemento3(varaible5,variable6)])
+                         elemento2(varaible3,variable4),
+                         elemento3(varaible5,variable6)])
 def test_parametrizado(elemento):
     pass
 
