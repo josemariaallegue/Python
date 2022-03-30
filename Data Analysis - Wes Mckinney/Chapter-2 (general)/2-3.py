@@ -1,7 +1,10 @@
 
+from pyclbr import Function
+
+
 print("Functions are objects\n")
 
-# al tener en cuenta es se puede psar una funcion como parametro de otra funcion
+# al tener en cuenta es se puede pasar una funcion como parametro de otra funcion
 
 states = [' Alabama ', 'Georgia!', 'Georgia', 'georgia', 'FlOrIda',
           'south carolina##', 'West virginia?']

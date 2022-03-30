@@ -1,6 +1,6 @@
 def funcion1():
     print(a)
-    # declarcion de variable globar dentro de funcion
+    # declarcion de variable global dentro de funcion
     # mala practica
     global b
     b = 2

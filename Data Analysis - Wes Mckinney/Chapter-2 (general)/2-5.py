@@ -2,7 +2,7 @@ print("Generators\n")
 
 # un generator es una funcion que devuelve un objeto iterable
 # tiene por lo menos un yield
-# recuerda los valores de las variables cada vez que es llamado
+# recuerda los valores de las variables cada vez que es llamado y devuelve el siguiente valor
 
 
 def squares(n=10):
@@ -41,9 +41,13 @@ print()
 
 
 print("Generator expresssions\n")
-# parecido a list, set and dict omprehensions
-# creacion del generado en una linea siendo menos verboso
+# parecido a list, set and dict comprehensions
+# creacion del generator en una linea siendo menos verboso
 gen = (x ** 2 for x in range(10))
 
-for i in gen:
-    print(i)
+"""for i in gen:
+    print(i)"""
+
+print(next(gen))
+print(next(gen))
+print(next(gen))

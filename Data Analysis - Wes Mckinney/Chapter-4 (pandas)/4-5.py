@@ -21,5 +21,5 @@ print(df.drop((['Colorado', 'Ohio'])))
 print()
 print(df.drop('two', axis=1))  # axis=1 indica que se quiren eliminar columnas
 
-# al poner true en inplace se modifica el objeto que la llama y no devuel nada
+# al poner true en inplace se modifica el objeto que la llama y no devuelve nada
 df.drop("two", axis=1, inplace=True)

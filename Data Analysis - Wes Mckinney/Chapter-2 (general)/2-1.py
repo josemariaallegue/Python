@@ -1,4 +1,4 @@
-print("List, set and dict omprehensions\n")
+print("List, set and dict comprehensions\n")
 
 nombres = ["jose", "maria", "allegue"]
 lista = [nombre.upper() for nombre in nombres if len(nombre) == 4]

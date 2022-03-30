@@ -3,7 +3,7 @@ import numpy as np
 
 print("Reindexing\n")
 
-# reindex permite reorganizar una serie o df a parir de un array
+# reindex permite reorganizar una serie o df a partir de un array
 # si en el nuevo index se pusiera alguno que no exista se ponen NaN como valor
 serie = pd.Series([4.5, 7.2, -5.3, 3.6], index=['d', 'b', 'a', 'c'])
 

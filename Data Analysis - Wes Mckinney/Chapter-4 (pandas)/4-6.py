@@ -18,7 +18,7 @@ print(serie[serie < 2])
 print()
 print(serie[1:3])
 print()
-print(serie["a":"d"])  # slicin es inclusivo con el ultimo elemento
+print(serie["a":"d"])  # slicin con letras es inclusivo con el ultimo elemento
 print()
 
 serie["b":"c"] = 2020
