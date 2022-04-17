@@ -1,106 +1,106 @@
-"""Listing 3-23 to Listing 3-27
-Written by Joshua Willman
-Featured in "Beginning PyQt - A Hands-on Approach to GUI Programming, 2nd Ed."
-"""
-
-# Import necessary modules
 import sys
-from PyQt6.QtWidgets import (QApplication, QDialog, QLabel,
-    QPushButton, QLineEdit, QMessageBox)
-from PyQt6.QtGui import QFont, QPixmap
+from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QMessageBox
+from PyQt6.QtGui import QPixmap
 
-class NewUserDialog(QDialog):
 
-    def __init__(self):
+class RegistrationWindow(QWidget):
+    def __init__(self) -> None:
         super().__init__()
-        self.setModal(True)
-        self.initializeUI()
+        self.initializeUi()
 
-    def initializeUI(self):
-        """Set up the application's GUI."""
-        self.setFixedSize(360, 320)
-        self.setWindowTitle("3.1 - Registration GUI")
-        self.setUpWindow()
+    def initializeUi(self) -> None:
+        self.setGeometry(800, 300, 240, 265)
+        self.setWindowTitle("Registration GUI")
+        self.setUpMainWindow()
+        self.show()
 
-    def setUpWindow(self):
-        """Create and arrange widgets in the window for 
-        collecting new account information."""
-        login_label = QLabel("Create New Account", self)
-        login_label.setFont(QFont("Arial", 20))
-        login_label.move(90, 20)
+    def setUpMainWindow(self) -> None:
+        self.loginLabel = QLabel("Create new account", self)
+        self.loginLabel.move(60, 10)
 
-        # Create QLabel for image
-        user_image = "images/new_user_icon.png"
-        
+        self.loginLabel = QLabel(self)
         try:
-            with open(user_image):
-                user_label = QLabel(self)
-                pixmap = QPixmap(user_image)
-                user_label.setPixmap(pixmap)
-                user_label.move(150, 60)
-        except FileNotFoundError as error:
-            print(f"Image not found. Error: {error}")
+            with open(r"Images\new_user_icon.png"):
+                pixmap = QPixmap(r"Images\new_user_icon.png")
+                self.loginLabel.setPixmap(pixmap)
+        except Exception as e:
+            self.loginLabel.setText(str(e))
+        self.loginLabel.move(80, 35)
 
-        # Create name QLabel and QLineEdit widgets
-        name_label = QLabel("Username:", self)
-        name_label.move(20, 144)
+        self.usernameLabel = QLabel("Username:", self)
+        self.usernameLabel.move(10, 110)
 
-        self.name_edit = QLineEdit(self)
-        self.name_edit.resize(250, 24)
-        self.name_edit.move(90, 140)
+        self.usernameEdit = QLineEdit(self)
+        self.usernameEdit.resize(160, 20)
+        self.usernameEdit.move(70, 110)
 
-        full_name_label = QLabel("Full Name:", self)
-        full_name_label.move(20, 174)
+        self.fullNameLabel = QLabel("Full name:", self)
+        self.fullNameLabel.move(10, 135)
 
-        full_name_edit = QLineEdit(self)
-        full_name_edit.resize(250, 24)
-        full_name_edit.move(90, 170)
+        self.fullNameEdit = QLineEdit(self)
+        self.fullNameEdit.resize(160, 20)
+        self.fullNameEdit.move(70, 135)
 
-        # Create password QLabel and QLineEdit widgets
-        new_pswd_label = QLabel("Password:", self)
-        new_pswd_label.move(20, 204)
+        self.passwordLabel = QLabel("Password:", self)
+        self.passwordLabel.move(10, 160)
 
-        self.new_pswd_edit = QLineEdit(self)
-        self.new_pswd_edit.setEchoMode(QLineEdit.EchoMode.Password)
-        self.new_pswd_edit.resize(250, 24)
-        self.new_pswd_edit.move(90, 200)
+        self.passwordEdit = QLineEdit(self)
+        self.passwordEdit.resize(160, 20)
+        self.passwordEdit.setEchoMode(QLineEdit.EchoMode.Password)
+        self.passwordEdit.move(70, 160)
 
-        confirm_label = QLabel("Confirm:", self)
-        confirm_label.move(20, 234)
+        self.confirmLabel = QLabel("Confirm:", self)
+        self.confirmLabel.move(10, 185)
 
-        self.confirm_edit = QLineEdit(self)
-        self.confirm_edit.setEchoMode(QLineEdit.EchoMode.Password)
-        self.confirm_edit.resize(250, 24)
-        self.confirm_edit.move(90, 230)
+        self.confirmEdit = QLineEdit(self)
+        self.confirmEdit.resize(160, 20)
+        self.confirmEdit.setEchoMode(QLineEdit.EchoMode.Password)
+        self.confirmEdit.move(70, 185)
 
-        # Create sign up QPushButton
-        sign_up_button = QPushButton("Sign Up", self)
-        sign_up_button.resize(320, 32)
-        sign_up_button.move(20, 270)
-        sign_up_button.clicked.connect(self.confirmSignUp)
+        self.showCheck = QCheckBox("Show password", self)
+        self.showCheck.move(70, 210)
+        self.showCheck.toggled.connect(self.showPassword)
 
-    def confirmSignUp(self):
-        """Check if user information is entered and correct. 
-        If so, append username and password text to file."""
-        name_text = self.name_edit.text()
-        pswd_text = self.new_pswd_edit.text()
-        confirm_text = self.confirm_edit.text()
+        self.signUpButton = QPushButton("Sign Up", self)
+        self.signUpButton.resize(220, 25)
+        self.signUpButton.move(10, 235)
+        self.signUpButton.clicked.connect(self.addUser)
 
-        if name_text == "" or pswd_text == "":
-            # Display QMessageBox if passwords don't match
-            QMessageBox.warning(self, "Error Message",
-                "Please enter username or password values.", 
-                QMessageBox.StandardButton.Close,
-                QMessageBox.StandardButton.Close)
-        elif pswd_text != confirm_text:
-            # Display QMessageBox if passwords don't match
-            QMessageBox.warning(self, "Error Message",
-                "The passwords you entered do not match.", 
-                QMessageBox.StandardButton.Close,
-                QMessageBox.StandardButton.Close)
+    def showPassword(self, checked) -> None:
+        if(checked):
+            self.passwordEdit.setEchoMode(QLineEdit.EchoMode.Normal)
+            self.confirmEdit.setEchoMode(QLineEdit.EchoMode.Normal)
         else:
-            # Return to login window if passwords match
-            with open("files/users.txt", "a+") as f:
-                f.write("\n" + name_text + " ")
-                f.write(pswd_text)
-            self.close() 
+            self.passwordEdit.setEchoMode(QLineEdit.EchoMode.Password)
+            self.confirmEdit.setEchoMode(QLineEdit.EchoMode.Password)
+
+    def addUser(self) -> None:
+        try:
+            if(self.passwordEdit.text() != self.confirmEdit.text()):
+                QMessageBox.warning(
+                    self, "Error en carga", "Las contraseañas no coinciden", QMessageBox.StandardButton.Close)
+
+            elif(self.usernameEdit.text() == "" or self.passwordEdit.text() == ""):
+                QMessageBox.warning(
+                    self, "Error en carga", "El usuario o contraseña se encuentran vacios", QMessageBox.StandardButton.Close)
+            else:
+                with open(r"Files\users.txt", "a+") as file:
+                    file.write("\n" + self.usernameEdit.text() +
+                               " " + self.passwordEdit.text())
+                QMessageBox.information(
+                    self, "Creacion de usuario", "Se ha creado correctamente el usuario", QMessageBox.StandardButton.Close)
+                self.close()
+        except FileNotFoundError:
+            QMessageBox.warning(
+                self, "Error en carga", "No fue posible cargar el archivo de usuarios", QMessageBox.StandardButton.Close)
+            self.close()
+
+
+def main():
+    app = QApplication(sys.argv)
+    window = RegistrationWindow()
+    sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()
