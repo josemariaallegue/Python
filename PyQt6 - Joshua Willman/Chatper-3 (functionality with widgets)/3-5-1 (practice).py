@@ -11,10 +11,12 @@ class LoginWindow(QWidget):
     def initializeUi(self) -> None:
         self.setGeometry(800, 300, 240, 170)
         self.setWindowTitle("Login GUI")
-        self.setUpMainWindow()
+        self.setUpWindow()
         self.show()
 
-    def setUpMainWindow(self) -> None:
+    def setUpWindow(self) -> None:
+        self.loginSuccesfull = False
+
         self.loginLabel = QLabel("Login", self)
         self.loginLabel.move(100, 10)
 
@@ -65,6 +67,7 @@ class LoginWindow(QWidget):
             if((self.usernameEdit.text(), self.passwordEdit.text()) in users.items()):
                 QMessageBox.information(
                     self, "Ingreso correcto", "Se ha ingresado correctamente", QMessageBox.StandardButton.Close)
+                self.loginSuccesfull = True
                 self.close()
             else:
                 QMessageBox.warning(
@@ -77,6 +80,20 @@ class LoginWindow(QWidget):
 
     def signUp(self) -> None:
         self.registrationWindow = RegistrationWindow()
+
+    def closeEvent(self, event) -> None:
+        if self.loginSuccesfull == True:
+            event.accept()
+        else:
+            answer = QMessageBox.question(self, "Quit Application?",
+                                          "Are you sure you want to QUIT?",
+                                          QMessageBox.StandardButton.No |
+                                          QMessageBox.StandardButton.Yes,
+                                          QMessageBox.StandardButton.Yes)
+            if answer == QMessageBox.StandardButton.Yes:
+                event.accept()
+            if answer == QMessageBox.StandardButton.No:
+                event.ignore()
 
 
 def main():

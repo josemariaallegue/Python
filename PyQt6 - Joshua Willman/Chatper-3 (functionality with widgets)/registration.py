@@ -11,10 +11,10 @@ class RegistrationWindow(QWidget):
     def initializeUi(self) -> None:
         self.setGeometry(800, 300, 240, 265)
         self.setWindowTitle("Registration GUI")
-        self.setUpMainWindow()
+        self.setUpWindow()
         self.show()
 
-    def setUpMainWindow(self) -> None:
+    def setUpWindow(self) -> None:
         self.loginLabel = QLabel("Create new account", self)
         self.loginLabel.move(60, 10)
 
