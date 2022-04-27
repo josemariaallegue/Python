@@ -28,11 +28,11 @@ class MainWindow(QWidget):
         self.food2Combo.addItems(foods)
 
         self.price1Spin = QSpinBox()
-        self.price1Spin.setRange(1, 100)
+        self.price1Spin.setRange(0, 100)
         self.price1Spin.setPrefix("$")
         self.price1Spin.valueChanged.connect(self.sumPrices)
         self.price2Spin = QSpinBox()
-        self.price2Spin.setRange(1, 100)
+        self.price2Spin.setRange(0, 100)
         self.price2Spin.setPrefix("$")
         self.price2Spin.valueChanged.connect(self.sumPrices)
 
