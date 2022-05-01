@@ -1,76 +1,52 @@
+from random import random
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QComboBox, QDateEdit, QTextEdit, QPushButton, QFormLayout, QHBoxLayout
-from PyQt6.QtCore import Qt, QDate
+import random
+from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QPushButton
+from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtGui import QIcon
 
 
-class MainWindow(QWidget):
-    def __init__(self) -> None:
+class EmptyWindow(QMainWindow):
+
+    def __init__(self):
         super().__init__()
-        self.initializeUi()
+        self.initializeUI()
 
-    def initializeUi(self):
-        self.setMinimumSize(500, 400)
-        self.setWindowTitle("QFormLayout example")
+    def initializeUI(self):
+        self.setMinimumSize(450, 350)
+        self.setWindowTitle("Main Window Template")
         self.setUpMainWindow()
         self.show()
 
     def setUpMainWindow(self):
-        # widgets
-        fromLabel = QLabel("Appointment form")
-        fromLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        info_label = QLabel("Click on the button and select a fruit.")
+        info_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        firstName = QLineEdit()
-        firstName.setPlaceholderText("First")
-        lastName = QLineEdit()
-        lastName.setPlaceholderText("Last")
+        self.fruits = [r"Images\1_apple.png", r"Images\2_pineapple.png",
+                       r"Images\3_watermelon.png", r"Images\4_banana.png"]
 
-        genderBox = QComboBox()
-        genderBox.addItems(["Male", "Female"])
+        self.fruitButton = QPushButton()
+        self.fruitButton.setIcon(QIcon(random.choice(self.fruits)))
+        self.fruitButton.setIconSize(QSize(60, 60))
+        self.fruitButton.clicked.connect(self.changeIcon)
 
-        birthEdit = QDateEdit()
-        birthEdit.setDate(QDate.currentDate())
-        birthEdit.setMaximumDate(QDate.currentDate())
-        birthEdit.setDisplayFormat("dd/MM/yyyy")
-        birthEdit.setCalendarPopup(True)
+        mainLayout = QVBoxLayout()
+        mainLayout.addWidget(info_label)
+        mainLayout.addWidget(self.fruitButton)
 
-        phoneEdit = QLineEdit()
-        phoneEdit.setInputMask("(999) 999-9999;_")
+        container = QWidget()
+        container.setLayout(mainLayout)
 
-        emailEdit = QLineEdit()
+        self.setCentralWidget(container)
 
-        commentsLabel = QLabel("Comments or messages")
-
-        commentsEdit = QTextEdit()
-
-        infoLabel = QLabel()
-
-        submitButton = QPushButton("Submit")
-
-        namesLayout = QHBoxLayout()
-        namesLayout.addWidget(firstName)
-        namesLayout.addWidget(lastName)
-
-        submitLayout = QHBoxLayout()
-        submitLayout.addWidget(infoLabel)
-        submitLayout.addWidget(submitButton)
-
-        mainForm = QFormLayout()
-        mainForm.addRow(fromLabel)
-        mainForm.addRow("Name", namesLayout)
-        mainForm.addRow("Gender", genderBox)
-        mainForm.addRow("Date", birthEdit)
-        mainForm.addRow("Phone", phoneEdit)
-        mainForm.addRow("Email", emailEdit)
-        mainForm.addRow(commentsLabel)
-        mainForm.addRow(commentsEdit)
-        mainForm.addRow(submitLayout)
-
-        self.setLayout(mainForm)
+    def changeIcon(self):
+        self.fruitButton.setIcon(QIcon(random.choice(self.fruits)))
+        self.fruitButton.setIconSize(QSize(60, 60))
 
 
 def main():
     app = QApplication(sys.argv)
-    window = MainWindow()
+    window = EmptyWindow()
     sys.exit(app.exec())
 
 

@@ -31,9 +31,8 @@ class EmptyWindow(QMainWindow):
         """Create the application's menu bar."""
         self.menuBar().setNativeMenuBar(False)
         # Create file menu and add actions
-    gi  file_menu = self.menuBar().addMenu("File")
+        file_menu = self.menuBar().addMenu("File")
         file_menu.addAction(self.quitAct)
-        
 
 
 def main():

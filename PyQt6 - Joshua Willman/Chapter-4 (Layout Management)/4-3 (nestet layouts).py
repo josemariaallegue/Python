@@ -46,13 +46,13 @@ class MainWindow(QWidget):
         self.totalLabel = QLabel("Total spent:")
         self.totalLabel.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-        mainBox = QVBoxLayout()
-        mainBox.addWidget(self.selectLabel)
-        mainBox.addLayout(h1Box)
-        mainBox.addLayout(h2Box)
-        mainBox.addWidget(self.totalLabel)
+        self.mainBox = QVBoxLayout()
+        self.mainBox.addWidget(self.selectLabel)
+        self.mainBox.addLayout(h1Box)
+        self.mainBox.addLayout(h2Box)
+        self.mainBox.addWidget(self.totalLabel)
 
-        self.setLayout(mainBox)
+        self.setLayout(self.mainBox)
 
     def sumPrices(self):
         self.totalLabel.setText(
