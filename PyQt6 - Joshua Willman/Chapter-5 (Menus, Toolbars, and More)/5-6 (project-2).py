@@ -5,14 +5,15 @@ Featured in "Beginning PyQt - A Hands-on Approach to GUI Programming, 2nd Ed."
 
 # Import necessary modules
 import sys
-from PyQt6.QtWidgets import (QApplication, QMainWindow, 
-    QWidget, QLabel, QPushButton, QDockWidget, QDialog,
-    QFileDialog, QMessageBox, QToolBar, QStatusBar,
-    QVBoxLayout)
+from PyQt6.QtWidgets import (QApplication, QMainWindow,
+                             QWidget, QLabel, QPushButton, QDockWidget, QDialog,
+                             QFileDialog, QMessageBox, QToolBar, QStatusBar,
+                             QVBoxLayout)
 from PyQt6.QtCore import Qt, QSize, QRect
-from PyQt6.QtGui import (QIcon, QAction, QPixmap, QTransform, 
-    QPainter)
+from PyQt6.QtGui import (QIcon, QAction, QPixmap, QTransform,
+                         QPainter)
 from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
+
 
 class MainWindow(QMainWindow):
 
@@ -46,12 +47,12 @@ class MainWindow(QMainWindow):
     def createActions(self):
         """Create the application's menu actions."""
         # Create actions for File menu
-        self.open_act = QAction(QIcon("images/open_file.png"),"Open")
+        self.open_act = QAction(QIcon("images/open_file.png"), "Open")
         self.open_act.setShortcut("Ctrl+O")
         self.open_act.setStatusTip("Open a new image")
         self.open_act.triggered.connect(self.openImage)
 
-        self.save_act = QAction(QIcon("images/save_file.png"),"Save")
+        self.save_act = QAction(QIcon("images/save_file.png"), "Save")
         self.save_act.setShortcut("Ctrl+S")
         self.save_act.setStatusTip("Save image")
         self.save_act.triggered.connect(self.saveImage)
@@ -97,7 +98,7 @@ class MainWindow(QMainWindow):
         """Create the application's menu bar."""
         self.menuBar().setNativeMenuBar(False)
 
-        # Create File menu and add actions 
+        # Create File menu and add actions
         file_menu = self.menuBar().addMenu("File")
         file_menu.addAction(self.open_act)
         file_menu.addAction(self.save_act)
@@ -106,7 +107,7 @@ class MainWindow(QMainWindow):
         file_menu.addSeparator()
         file_menu.addAction(self.quit_act)
 
-        # Create Edit menu and add actions 
+        # Create Edit menu and add actions
         edit_menu = self.menuBar().addMenu("Edit")
         edit_menu.addAction(self.rotate90_act)
         edit_menu.addAction(self.rotate180_act)
@@ -118,14 +119,14 @@ class MainWindow(QMainWindow):
         edit_menu.addSeparator()
         edit_menu.addAction(self.clear_act)
 
-        # Create View menu and add actions 
+        # Create View menu and add actions
         view_menu = self.menuBar().addMenu("View")
         view_menu.addAction(self.toggle_dock_act)
 
     def createToolBar(self):
         """Create the application's toolbar."""
         tool_bar = QToolBar("Photo Editor Toolbar")
-        tool_bar.setIconSize(QSize(24,24))
+        tool_bar.setIconSize(QSize(24, 24))
         self.addToolBar(tool_bar)
 
         # Add actions to the toolbar
@@ -171,7 +172,7 @@ class MainWindow(QMainWindow):
         self.resize_half.setStatusTip("Resize image to half the original size")
         self.resize_half.clicked.connect(self.resizeImageHalf)
 
-        # Create layout for dock widget 
+        # Create layout for dock widget
         dock_v_box = QVBoxLayout()
         dock_v_box.addWidget(self.rotate90)
         dock_v_box.addWidget(self.rotate180)
@@ -187,10 +188,10 @@ class MainWindow(QMainWindow):
         tools_contents = QWidget()
         tools_contents.setLayout(dock_v_box)
         dock_widget.setWidget(tools_contents)
-        
+
         # Set initial location of dock widget
-        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, 
-            dock_widget)
+        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea,
+                           dock_widget)
 
         # Handle the visibility of the dock widget
         self.toggle_dock_act = dock_widget.toggleViewAction()
@@ -199,34 +200,34 @@ class MainWindow(QMainWindow):
         """Open an image file and display its contents on the 
         QLabel widget."""
         image_file, _ = QFileDialog.getOpenFileName(
-            self, "Open Image", "", 
+            self, "Open Image", "",
             "JPG Files (*.jpeg *.jpg );;PNG Files (*.png);;\
                 Bitmap Files (*.bmp);;GIF Files (*.gif)")
 
         if image_file:
             self.image = QPixmap(image_file)
 
-            self.image_label.setPixmap(self.image.scaled(self.image_label.size(), 
-                Qt.AspectRatioMode.KeepAspectRatio, 
-                Qt.TransformationMode.SmoothTransformation))
+            self.image_label.setPixmap(self.image.scaled(self.image_label.size(),
+                                                         Qt.AspectRatioMode.KeepAspectRatio,
+                                                         Qt.TransformationMode.SmoothTransformation))
         else:
-            QMessageBox.information(self, "No Image", 
-                "No Image Selected.", QMessageBox.StandardButton.Ok)
+            QMessageBox.information(self, "No Image",
+                                    "No Image Selected.", QMessageBox.StandardButton.Ok)
         self.print_act.setEnabled(True)
 
     def saveImage(self):
         """Display QFileDialog to select image location and 
         save the image."""
         image_file, _ = QFileDialog.getSaveFileName(
-            self, "Save Image", "", 
+            self, "Save Image", "",
             "JPG Files (*.jpeg *.jpg );;PNG Files (*.png);;\
                 Bitmap Files (*.bmp);;GIF Files (*.gif)")
 
         if image_file and self.image.isNull() == False:
             self.image.save(image_file)
         else:
-            QMessageBox.information(self, "Not Saved", 
-                "Image not saved.", QMessageBox.StandardButton.Ok)
+            QMessageBox.information(self, "Not Saved",
+                                    "Image not saved.", QMessageBox.StandardButton.Ok)
 
     def printImage(self):
         """Print image and use QPrinter to select the 
@@ -235,26 +236,27 @@ class MainWindow(QMainWindow):
         # Configure the printer
         print_dialog = QPrintDialog(printer)
         if print_dialog.exec() == QDialog.DialogCode.Accepted:
-            # Use QPainter to output a PDF file 
+            # Use QPainter to output a PDF file
             painter = QPainter()
             painter.begin(printer)
-            # Create QRect object to hold the painter's current 
-            # viewport, which is the image_label 
+            # Create QRect object to hold the painter's current
+            # viewport, which is the image_label
             rect = QRect(painter.viewport())
-            # Get the size of image_label and use it to set the size 
+            # Get the size of image_label and use it to set the size
             # of the viewport
             size = QSize(self.image_label.pixmap().size())
             size.scale(rect.size(), Qt.AspectRatioMode.KeepAspectRatio)
-            painter.setViewport(rect.x(), rect.y(), size.width(), size.height())
+            painter.setViewport(rect.x(), rect.y(),
+                                size.width(), size.height())
             painter.setWindow(self.image_label.pixmap().rect())
-            # Scale the image_label to fit the rect source (0, 0) 
+            # Scale the image_label to fit the rect source (0, 0)
             painter.drawPixmap(0, 0, self.image_label.pixmap())
             painter.end()
-            
+
     def clearImage(self):
         """Clears current image in the QLabel widget."""
         self.image_label.clear()
-        self.image = QPixmap() # Reset pixmap so that isNull() = True
+        self.image = QPixmap()  # Reset pixmap so that isNull() = True
         self.print_act.setEnabled(False)
 
     def rotateImage90(self):
@@ -263,30 +265,30 @@ class MainWindow(QMainWindow):
             transform90 = QTransform().rotate(90)
             pixmap = QPixmap(self.image)
             mode = Qt.TransformationMode.SmoothTransformation
-            rotated = pixmap.transformed(transform90, 
-                mode=mode)
+            rotated = pixmap.transformed(transform90,
+                                         mode=mode)
 
-            self.image_label.setPixmap(rotated.scaled(self.image_label.size(), 
-                Qt.AspectRatioMode.KeepAspectRatio, 
-                Qt.TransformationMode.SmoothTransformation))
-            self.image = QPixmap(rotated) 
-            self.image_label.repaint() # Repaint the child widget
+            self.image_label.setPixmap(rotated.scaled(self.image_label.size(),
+                                                      Qt.AspectRatioMode.KeepAspectRatio,
+                                                      Qt.TransformationMode.SmoothTransformation))
+            self.image = QPixmap(rotated)
+            self.image_label.repaint()  # Repaint the child widget
 
     def rotateImage180(self):
         """Rotate image 180º clockwise."""
         if self.image.isNull() == False:
             transform180 = QTransform().rotate(180)
             pixmap = QPixmap(self.image)
-            rotated = pixmap.transformed(transform180, 
-                mode=Qt.TransformationMode.SmoothTransformation)
+            rotated = pixmap.transformed(transform180,
+                                         mode=Qt.TransformationMode.SmoothTransformation)
 
-            self.image_label.setPixmap(rotated.scaled(self.image_label.size(), 
-                Qt.AspectRatioMode.KeepAspectRatio, 
-                Qt.TransformationMode.SmoothTransformation))
-            # In order to keep from being allowed to rotate 
-            # the image, set the rotated image as self.image 
-            self.image = QPixmap(rotated) 
-            self.image_label.repaint() # Repaint the child widget
+            self.image_label.setPixmap(rotated.scaled(self.image_label.size(),
+                                                      Qt.AspectRatioMode.KeepAspectRatio,
+                                                      Qt.TransformationMode.SmoothTransformation))
+            # In order to keep from being allowed to rotate
+            # the image, set the rotated image as self.image
+            self.image = QPixmap(rotated)
+            self.image_label.repaint()  # Repaint the child widget
 
     def flipImageHorizontal(self):
         """Mirror the image across the horizontal axis."""
@@ -295,9 +297,9 @@ class MainWindow(QMainWindow):
             pixmap = QPixmap(self.image)
             flipped = pixmap.transformed(flip_h)
 
-            self.image_label.setPixmap(flipped.scaled(self.image_label.size(), 
-                Qt.AspectRatioMode.KeepAspectRatio, 
-                Qt.TransformationMode.SmoothTransformation))
+            self.image_label.setPixmap(flipped.scaled(self.image_label.size(),
+                                                      Qt.AspectRatioMode.KeepAspectRatio,
+                                                      Qt.TransformationMode.SmoothTransformation))
             self.image = QPixmap(flipped)
             self.image_label.repaint()
 
@@ -308,9 +310,9 @@ class MainWindow(QMainWindow):
             pixmap = QPixmap(self.image)
             flipped = pixmap.transformed(flip_v)
 
-            self.image_label.setPixmap(flipped.scaled(self.image_label.size(), 
-                Qt.AspectRatioMode.KeepAspectRatio, 
-                Qt.TransformationMode.SmoothTransformation))
+            self.image_label.setPixmap(flipped.scaled(self.image_label.size(),
+                                                      Qt.AspectRatioMode.KeepAspectRatio,
+                                                      Qt.TransformationMode.SmoothTransformation))
             self.image = QPixmap(flipped)
             self.image_label.repaint()
 
@@ -321,11 +323,12 @@ class MainWindow(QMainWindow):
             pixmap = QPixmap(self.image)
             resized = pixmap.transformed(resize)
 
-            self.image_label.setPixmap(resized.scaled(self.image_label.size(), 
-                Qt.AspectRatioMode.KeepAspectRatio,
-                Qt.TransformationMode.SmoothTransformation))
+            self.image_label.setPixmap(resized.scaled(self.image_label.size(),
+                                                      Qt.AspectRatioMode.KeepAspectRatio,
+                                                      Qt.TransformationMode.SmoothTransformation))
             self.image = QPixmap(resized)
             self.image_label.repaint()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
