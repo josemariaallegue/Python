@@ -1,0 +1,10 @@
+QPushButton#Warning_Button {
+    background-color: #C92108;
+    border-radius: 5px;
+    padding: 6px;
+    color: #FFFFFF
+}
+
+QPushButton#Warning_Button:pressed {
+    background-color: #F7B519;
+}
