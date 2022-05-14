@@ -1,10 +1,67 @@
-QPushButton#Warning_Button {
+QWidget {
     background-color: #C92108;
-    border-radius: 5px;
+}
+
+QWidget#Tabs {
+    background-color: #FCEBCD;
+    border-radius: 4px
+}
+
+QWidget#ImageBorder {
+    background-color: #FCF9F3;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: #FABB4C
+}
+
+QWidget#Side {
+    background-color: #EFD096;
+    border-radius: 4px
+}
+
+QLabel {
+    background-color: #EFD096;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: #EFD096
+}
+
+QLabel#Header {
+    background-color: #EFD096;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: #EFD096;
+    padding-left: 10px;
+    color: #961A07
+}
+
+QLabel#ImageInfo {
+    background-color: #FCF9F3;
+    border-radius: 4px;
+}
+
+QGroupBox {
+    background-color: #FCEBCD;
+    color: #961A07
+}
+
+QRadioButton {
+    background-color: #FCF9F3
+}
+
+QPushButton {
+    background-color: #C92108;
+    border-radius: 4px;
     padding: 6px;
     color: #FFFFFF
 }
 
-QPushButton#Warning_Button:pressed {
-    background-color: #F7B519;
+QPushButton:pressed {
+    background-color: #C86354;
+    border-radius: 4px;
+    padding: 6px;
+    color: #DFD8D7
 }
