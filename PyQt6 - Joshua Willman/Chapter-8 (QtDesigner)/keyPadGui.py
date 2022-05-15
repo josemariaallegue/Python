@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
+class Ui_keyPad(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(449, 406)
@@ -20,6 +20,7 @@ class Ui_Form(object):
         Form.setSizePolicy(sizePolicy)
         Form.setMinimumSize(QtCore.QSize(449, 406))
         Form.setMaximumSize(QtCore.QSize(449, 406))
+        
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
@@ -31,6 +32,7 @@ class Ui_Form(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
         Form.setPalette(palette)
+        
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout.setObjectName("verticalLayout")
         self.titleLabel = QtWidgets.QLabel(Form)
@@ -60,6 +62,7 @@ class Ui_Form(object):
         self.titleLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.titleLabel.setObjectName("titleLabel")
         self.verticalLayout.addWidget(self.titleLabel)
+        
         self.inputFrame = QtWidgets.QFrame(Form)
         self.inputFrame.setMinimumSize(QtCore.QSize(431, 91))
         self.inputFrame.setMaximumSize(QtCore.QSize(431, 91))
