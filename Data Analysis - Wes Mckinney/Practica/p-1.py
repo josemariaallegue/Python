@@ -1,6 +1,10 @@
+import numpy as np
 import pandas as pd
-from pathlib import Path
-import os
 
-data = pd.read_csv(Path(r"Archivos\spx.csv"))
-print(data)
+df = pd.DataFrame(np.random.rand(6, 4),
+    index=['one', 'two', 'three', 'four', 'five', 'six'],
+    columns=pd.Index(['A', 'B', 'C', 'D'], name='Genus'))
+
+df = pd.DataFrame()
+
+df.plot.bar()
