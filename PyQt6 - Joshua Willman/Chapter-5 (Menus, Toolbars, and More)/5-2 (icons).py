@@ -51,7 +51,7 @@ class MainWindow(QMainWindow):
         container.setLayout(main_v_box)
         
         self.setCentralWidget(container)
-        self.setLayout(container)
+        #self.setLayout(container)
 
     def changeButtonIcon(self):
         """When the button is clicked, change the icon to 
